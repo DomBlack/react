@@ -229,11 +229,8 @@ function renderXJSExpressionContainer(traverse, object, isLast, path, state) {
 }
 
 function quoteAttrName(attr) {
-  // Quote invalid JS identifiers.
-  if (!/^[a-z_$][a-z\d_$]*$/i.test(attr)) {
-    return '"' + attr + '"';
-  }
-  return attr;
+  // Always quote for Google Closure Advanced Mode (after JSX transforms)
+  return '"' + attr + '"';
 }
 
 function trimLeft(value) {
